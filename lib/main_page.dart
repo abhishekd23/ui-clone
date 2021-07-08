@@ -19,6 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   bool search = false;
   Icon cusIcon = Icon(Icons.search);
   Widget cusSearchBar = Text(" ");
+  ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,6 +177,7 @@ class _MainScreenState extends State<MainScreen> {
               child: Padding(
                 padding: EdgeInsets.only(top: 0),
                 child: ListView(
+                  controller: _scrollController,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -220,7 +222,13 @@ class _MainScreenState extends State<MainScreen> {
                       colour: Colors.yellow.shade600,
                       iconData: IconButton(
                         //iconSize: 20.0,
-                        onPressed: () {},
+                        onPressed: () {
+                          _scrollController.animateTo(
+                              _scrollController.position.maxScrollExtent -
+                                  (MediaQuery.of(context).size.height) / 7,
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.ease);
+                        },
                         icon: Icon(
                           Icons.timelapse_outlined,
                           color: Colors.white,

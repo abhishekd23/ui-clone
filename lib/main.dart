@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         slideWidth: MediaQuery.of(context).size.width *
             (ZoomDrawer.isRTL() ? 0.45 : 0.65),
         openCurve: Curves.fastOutSlowIn,
-        closeCurve: Curves.bounceIn,
+        closeCurve: Curves.fastOutSlowIn,
       ),
     );
   }
